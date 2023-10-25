@@ -5,7 +5,7 @@
 resource "ncloud_auto_scaling_group" "this" {
   launch_configuration_no = var.launch_configuration_no
 
-  name                    = var.asg_name
+  name                    = var.name
   subnet_no               = var.subnet_no
   server_name_prefix      = var.server_name_prefix
   min_size                = var.min_size

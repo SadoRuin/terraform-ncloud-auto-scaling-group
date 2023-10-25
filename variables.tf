@@ -3,7 +3,7 @@ variable "launch_configuration_no" {
   type        = string
 }
 
-variable "asg_name" {
+variable "name" {
   description = "Auto Scaling Group 이름"
   type        = string
 }
