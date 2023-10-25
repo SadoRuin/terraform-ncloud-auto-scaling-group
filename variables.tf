@@ -68,11 +68,11 @@ variable "target_group_list" {
   default     = []
 }
 
-# variable "wait_for_capacity_timeout" {
-#   description = "용량 변경 대기 시간 (초)"
-#   type        = number
-#   default     = 300
-# }
+variable "wait_for_capacity_timeout" {
+  description = "용량 변경 대기 시간 (초)"
+  type        = number
+  default     = null
+}
 
 variable "auto_scaling_policies" {
   description = "Auto Scaling Policy 리스트"

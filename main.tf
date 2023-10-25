@@ -20,7 +20,7 @@ resource "ncloud_auto_scaling_group" "this" {
   access_control_group_no_list = var.access_control_group_no_list
   target_group_list            = var.target_group_list
 
-  # wait_for_capacity_timeout = var.wait_for_capacity_timeout
+  wait_for_capacity_timeout = var.wait_for_capacity_timeout
 }
 
 
