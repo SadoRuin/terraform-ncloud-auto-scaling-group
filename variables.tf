@@ -30,11 +30,6 @@ variable "product_name" {
   type        = string
 }
 
-variable "login_key_name" {
-  description = "서버 접속 키(.pem) 이름"
-  type        = string
-}
-
 variable "is_encrypted_volume" {
   description = "암호화 볼륨 사용 여부"
   type        = bool
