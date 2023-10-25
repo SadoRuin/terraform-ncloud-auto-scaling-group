@@ -1,1 +1,1 @@
-# NCP Auto Scaling Terraform module
+# NCP Auto Scaling Group Terraform module
