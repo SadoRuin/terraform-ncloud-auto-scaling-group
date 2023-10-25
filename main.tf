@@ -30,7 +30,7 @@ resource "ncloud_auto_scaling_group" "this" {
 
 locals {
   auto_scaling_policies = {
-    for x in var.var.auto_scaling_policies :
+    for x in var.auto_scaling_policies :
     x.name => x
   }
 }
