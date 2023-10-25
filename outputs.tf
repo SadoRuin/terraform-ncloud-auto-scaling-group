@@ -1,8 +1,3 @@
-output "launch_configuration" {
-  description = "Launch Configuration 출력"
-  value       = ncloud_launch_configuration.this
-}
-
 output "auto_scaling_group" {
   description = "Auto Scaling Group 출력"
   value       = ncloud_auto_scaling_group.this

@@ -1,96 +1,9 @@
 ################################################################################
-# Server Image
-################################################################################
-
-data "ncloud_server_image" "server_image" {
-  count = var.server_image_name != null ? 1 : 0
-
-  filter {
-    name   = "product_name"
-    values = [var.server_image_name]
-  }
-}
-
-data "ncloud_member_server_image" "member_server_image" {
-  count = var.member_server_image_name != null ? 1 : 0
-
-  filter {
-    name   = "name"
-    values = [var.member_server_image_name]
-  }
-}
-
-
-################################################################################
-# Server Product
-################################################################################
-
-
-locals {
-  product_type = {
-    "High CPU"      = "HICPU"
-    "Standard"      = "STAND"
-    "High Memory"   = "HIMEM"
-    "CPU Intensive" = "CPU"
-    "GPU"           = "GPU"
-    "BareMetal"     = "BM"
-  }
-}
-
-data "ncloud_server_product" "server_product" {
-  server_image_product_code = (
-    var.server_image_name != null
-    ? data.ncloud_server_image.server_image[0].id
-    : data.ncloud_member_server_image.member_server_image[0].original_server_image_product_code
-  )
-
-  filter {
-    name   = "generation_code"
-    values = [upper(var.product_generation)]
-  }
-  filter {
-    name   = "product_type"
-    values = [local.product_type[var.product_type]]
-  }
-  filter {
-    name   = "product_name"
-    values = [var.product_name]
-  }
-}
-
-
-################################################################################
-# Launch Configuration
-################################################################################
-
-resource "ncloud_launch_configuration" "this" {
-  name = var.lc_name
-
-  server_image_product_code = (
-    var.server_image_name != null
-    ? data.ncloud_server_image.server_image[0].id
-    : null
-  )
-
-  member_server_image_no = (
-    var.member_server_image_name != null
-    ? data.ncloud_member_server_image.member_server_image[0].id
-    : null
-  )
-
-  server_product_code = data.ncloud_server_product.server_product.id
-  is_encrypted_volume = var.is_encrypted_volume
-  init_script_no      = var.init_script_no
-  login_key_name      = var.login_key_name
-}
-
-
-################################################################################
 # Auto Scaling Group
 ################################################################################
 
 resource "ncloud_auto_scaling_group" "this" {
-  launch_configuration_no = ncloud_launch_configuration.this.id
+  launch_configuration_no = var.launch_configuration_no
 
   name                    = var.asg_name
   subnet_no               = var.subnet_no

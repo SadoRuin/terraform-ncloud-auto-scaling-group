@@ -1,49 +1,5 @@
-variable "lc_name" {
-  description = "Launch Configuration 이름"
-  type        = string
-}
-
-variable "server_image_name" {
-  description = "서버 이미지 이름"
-  type        = string
-  default     = null
-}
-
-variable "member_server_image_name" {
-  description = "내 서버 이미지 이름"
-  type        = string
-  default     = null
-}
-
-variable "product_generation" {
-  description = "서버 세대 (G1 | G2)"
-  type        = string
-}
-
-variable "product_type" {
-  description = "서버 타입 (High CPU | Standard | High Memory | CPU Intensive | GPU | BareMetal)"
-  type        = string
-}
-
-variable "product_name" {
-  description = "서버 스펙 이름"
-  type        = string
-}
-
-variable "is_encrypted_volume" {
-  description = "암호화 볼륨 사용 여부"
-  type        = bool
-  default     = false
-}
-
-variable "init_script_no" {
-  description = "Init Script 번호"
-  type        = string
-  default     = null
-}
-
-variable "login_key_name" {
-  description = "서버 접속 키(.pem) 이름"
+variable "launch_configuration_no" {
+  description = "Launch Configuration 번호"
   type        = string
 }
 
