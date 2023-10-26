@@ -70,7 +70,7 @@ variable "target_group_list" {
 
 variable "wait_for_capacity_timeout" {
   description = "용량 변경 대기 시간 (초)"
-  type        = number
+  type        = string
   default     = null
 }
 
