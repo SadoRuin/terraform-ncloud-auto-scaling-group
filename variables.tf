@@ -1,5 +1,5 @@
 variable "launch_configuration_no" {
-  description = "Launch Configuration 번호"
+  description = "Launch Configuration ID"
   type        = string
 }
 
@@ -9,7 +9,7 @@ variable "name" {
 }
 
 variable "subnet_no" {
-  description = "Subnet 번호"
+  description = "Subnet ID"
   type        = string
 }
 
@@ -89,7 +89,7 @@ variable "auto_scaling_policies" {
 variable "auto_scaling_schedules" {
   description = "Auto Scaling Schedule 리스트"
   type = list(object({
-    name             = string           #  Scaling 일정 이름
+    name             = string           # Scaling 스케줄 이름
     min_size         = number           # 최소 용량
     max_size         = number           # 최대 용량
     desired_capacity = number           # 기대 용량
